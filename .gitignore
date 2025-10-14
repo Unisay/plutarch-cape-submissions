@@ -1,0 +1,30 @@
+# Haskell build artifacts
+dist/
+dist-newstyle/
+cabal.project.local
+cabal.project.local~
+.ghc.environment.*
+
+# Nix build artifacts
+result
+result-*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Direnv
+.direnv/
+
+# Generated UPLC output files
+*.uplc
+
+# LLM-generated content (private by default)
+.local/
+
+# OS
+.DS_Store
+.claude/settings.local.json
