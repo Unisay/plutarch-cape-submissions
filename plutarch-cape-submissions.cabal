@@ -45,21 +45,34 @@ common common-exe
   ghc-options:   -threaded -rtsopts -with-rtsopts=-N
   build-depends: plutarch-cape-submissions
 
-executable factorial
+executable factorial-size
   import:         common-exe
   main-is:        Main.hs
-  hs-source-dirs: exe/factorial
+  hs-source-dirs: exe/factorial-size
   build-depends:  plutus-core
+
+executable factorial-exbudget
+  import:         common-exe
+  main-is:        Main.hs
+  hs-source-dirs: exe/factorial-exbudget
+  build-depends:  plutus-core  
 
 executable factorial-naive
   import:         common-exe
   main-is:        Main.hs
   hs-source-dirs: exe/factorial-naive
 
-executable fibonacci
+executable fibonacci-size
   import:         common-exe
   main-is:        Main.hs
-  hs-source-dirs: exe/fibonacci
+  hs-source-dirs: exe/fibonacci-size
+  build-depends:  plutus-core    
+
+executable fibonacci-exbudget
+  import:         common-exe
+  main-is:        Main.hs
+  hs-source-dirs: exe/fibonacci-exbudget
+  build-depends:  plutus-core    
 
 executable fibonacci-naive
   import:         common-exe
