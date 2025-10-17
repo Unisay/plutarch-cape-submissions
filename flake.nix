@@ -123,9 +123,11 @@
 
                   echo ""
                   echo "Generating UPLC files..."
-                  cabal run factorial
+                  cabal run factorial-size
+                  cabal run factorial-exbudget
                   cabal run factorial-naive
-                  cabal run fibonacci
+                  cabal run fibonacci-size
+                  cabal run fibonacci-exbudget
                   cabal run fibonacci-naive
 
                   echo ""
@@ -144,10 +146,12 @@
             shellHook = ''
               echo "Plutarch UPLC-CAPE benchmark submissions"
               echo "Available executables:"
-              echo "  - cabal run factorial           # Optimized factorial (pfix')"
-              echo "  - cabal run factorial-naive     # Naive factorial (pfix)"
-              echo "  - cabal run fibonacci           # Optimized fibonacci (pfix''')"
-              echo "  - cabal run fibonacci-naive     # Naive fibonacci (pfix)"
+              echo "  - cabal run factorial-size      # Size-optimized factorial"
+              echo "  - cabal run factorial-exbudget  # Budget-optimized factorial"
+              echo "  - cabal run factorial-naive     # Naive factorial baseline"
+              echo "  - cabal run fibonacci-size      # Size-optimized fibonacci"
+              echo "  - cabal run fibonacci-exbudget  # Budget-optimized fibonacci"
+              echo "  - cabal run fibonacci-naive     # Naive fibonacci baseline"
               echo ""
               echo "Quick commands:"
               echo "  - build         # Compile and run all executables to generate UPLC files"
@@ -165,11 +169,13 @@
           project = projectFor system;
         in
         {
-          factorial = project.getComponent "plutarch-cape-submissions:exe:factorial";
+          factorial-size = project.getComponent "plutarch-cape-submissions:exe:factorial-size";
+          factorial-exbudget = project.getComponent "plutarch-cape-submissions:exe:factorial-exbudget";
           factorial-naive = project.getComponent "plutarch-cape-submissions:exe:factorial-naive";
-          fibonacci = project.getComponent "plutarch-cape-submissions:exe:fibonacci";
+          fibonacci-size = project.getComponent "plutarch-cape-submissions:exe:fibonacci-size";
+          fibonacci-exbudget = project.getComponent "plutarch-cape-submissions:exe:fibonacci-exbudget";
           fibonacci-naive = project.getComponent "plutarch-cape-submissions:exe:fibonacci-naive";
-          default = project.getComponent "plutarch-cape-submissions:exe:factorial";
+          default = project.getComponent "plutarch-cape-submissions:exe:factorial-size";
         }
       );
 
@@ -184,17 +190,25 @@
       );
 
       apps = perSystem (system: {
-        factorial = {
+        factorial-size = {
           type = "app";
-          program = "${self.packages.${system}.factorial}/bin/factorial";
+          program = "${self.packages.${system}.factorial-size}/bin/factorial-size";
+        };
+        factorial-exbudget = {
+          type = "app";
+          program = "${self.packages.${system}.factorial-exbudget}/bin/factorial-exbudget";
         };
         factorial-naive = {
           type = "app";
           program = "${self.packages.${system}.factorial-naive}/bin/factorial-naive";
         };
-        fibonacci = {
+        fibonacci-size = {
           type = "app";
-          program = "${self.packages.${system}.fibonacci}/bin/fibonacci";
+          program = "${self.packages.${system}.fibonacci-size}/bin/fibonacci-size";
+        };
+        fibonacci-exbudget = {
+          type = "app";
+          program = "${self.packages.${system}.fibonacci-exbudget}/bin/fibonacci-exbudget";
         };
         fibonacci-naive = {
           type = "app";
@@ -202,7 +216,7 @@
         };
         default = {
           type = "app";
-          program = "${self.packages.${system}.default}/bin/factorial";
+          program = "${self.packages.${system}.default}/bin/factorial-size";
         };
       });
 

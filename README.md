@@ -4,12 +4,19 @@ This repository contains Plutarch implementations for the [UPLC-CAPE benchmark](
 
 ## Benchmark Implementations
 
-This project provides 4 different implementations:
+This project provides 6 different implementations showcasing various optimization strategies:
 
-1. **factorial** - Optimized factorial using custom `pfix'`
-2. **factorial_naive_recursion** - Naive factorial using standard library `pfix`
-3. **fibonacci** - Optimized fibonacci using custom `pfix''`
-4. **fibonacci_naive_recursion** - Naive fibonacci using standard library `pfix`
+### Factorial Implementations
+
+1. **factorial-naive** - Baseline implementation
+2. **factorial-size** - Optimized for code size
+3. **factorial-exbudget** - Optimized for execution budget
+
+### Fibonacci Implementations
+
+4. **fibonacci-naive** - Baseline implementation
+5. **fibonacci-size** - Optimized for code size
+6. **fibonacci-exbudget** - Optimized for execution budget
 
 ## Project Structure
 
@@ -18,16 +25,20 @@ This project provides 4 different implementations:
 ├── lib/
 │   └── Compile.hs           # Shared UPLC compilation library
 ├── exe/
-│   ├── factorial/
-│   │   └── Main.hs          # Optimized factorial (custom pfix')
+│   ├── factorial-size/
+│   │   └── Main.hs          # Size-optimized factorial
+│   ├── factorial-exbudget/
+│   │   └── Main.hs          # Budget-optimized factorial
 │   ├── factorial-naive/
-│   │   └── Main.hs          # Naive factorial (standard pfix)
-│   ├── fibonacci/
-│   │   └── Main.hs          # Optimized fibonacci (custom pfix'')
+│   │   └── Main.hs          # Naive factorial baseline
+│   ├── fibonacci-size/
+│   │   └── Main.hs          # Size-optimized fibonacci
+│   ├── fibonacci-exbudget/
+│   │   └── Main.hs          # Budget-optimized fibonacci
 │   └── fibonacci-naive/
-│       └── Main.hs          # Naive fibonacci (standard pfix)
+│       └── Main.hs          # Naive fibonacci baseline
 ├── cabal.project            # Cabal project with CHaP configuration
-├── plutarch-cape-submissions.cabal  # Package definition with library and 4 executables
+├── plutarch-cape-submissions.cabal  # Package definition with library and 6 executables
 ├── flake.nix                # Nix flake with haskell.nix
 └── .envrc                   # Direnv configuration
 ```
@@ -62,9 +73,11 @@ This project provides 4 different implementations:
 4. Run individual executables to generate UPLC files:
 
    ```bash
-   cabal run factorial           # Generates factorial.uplc
+   cabal run factorial-size      # Generates factorial_size.uplc
+   cabal run factorial-exbudget  # Generates factorial_exbudget.uplc
    cabal run factorial-naive     # Generates factorial_naive_recursion.uplc
-   cabal run fibonacci           # Generates fibonacci.uplc
+   cabal run fibonacci-size      # Generates fibonacci_size.uplc
+   cabal run fibonacci-exbudget  # Generates fibonacci_exbudget.uplc
    cabal run fibonacci-naive     # Generates fibonacci_naive_recursion.uplc
    ```
 
@@ -92,9 +105,11 @@ If you have direnv installed:
 Run executables directly with nix:
 
 ```bash
-nix run .#factorial
+nix run .#factorial-size
+nix run .#factorial-exbudget
 nix run .#factorial-naive
-nix run .#fibonacci
+nix run .#fibonacci-size
+nix run .#fibonacci-exbudget
 nix run .#fibonacci-naive
 ```
 
@@ -102,10 +117,12 @@ nix run .#fibonacci-naive
 
 Running the executables will generate the following UPLC files:
 
-- `factorial.uplc` - Optimized factorial implementation
-- `factorial_naive_recursion.uplc` - Naive factorial implementation
-- `fibonacci.uplc` - Optimized fibonacci implementation
-- `fibonacci_naive_recursion.uplc` - Naive fibonacci implementation
+- `factorial_size.uplc` - Size-optimized factorial
+- `factorial_exbudget.uplc` - Budget-optimized factorial
+- `factorial_naive_recursion.uplc` - Naive factorial baseline
+- `fibonacci_size.uplc` - Size-optimized fibonacci
+- `fibonacci_exbudget.uplc` - Budget-optimized fibonacci
+- `fibonacci_naive_recursion.uplc` - Naive fibonacci baseline
 
 ## Architecture
 
