@@ -9,4 +9,4 @@ pfactorialNaive =
     pif (n #<= 0) 1 (n * (self # (n - 1)))
 
 main :: IO ()
-main = compileToUplc pfactorialNaive "factorial_naive_recursion.uplc"
+main = compileToUplc "factorial_naive_recursion.uplc" pfactorialNaive

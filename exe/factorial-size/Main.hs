@@ -22,4 +22,4 @@ pfactorial =
     pif'' (x #<= 0) 1 (x * (r # (x - 1)))
 
 main :: IO ()
-main = compileToUplc pfactorial "factorial_size.uplc"
+main = compileToUplc "factorial_size.uplc" pfactorial

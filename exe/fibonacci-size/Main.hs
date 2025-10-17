@@ -21,4 +21,4 @@ pfibo =
     pif'' (x #<= 1) x (r # (x - 1) + r # (x - 2))
 
 main :: IO ()
-main = compileToUplc pfibo "fibonacci_size.uplc"
+main = compileToUplc "fibonacci_size.uplc" pfibo
