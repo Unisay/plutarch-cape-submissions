@@ -29,7 +29,7 @@ common common-opts
     TypeOperators
 
   build-depends:
-    , base      >=4.14 && <5
+    , base    >=4.14 && <5
     , plutarch
 
 library
@@ -55,7 +55,7 @@ executable factorial-exbudget
   import:         common-exe
   main-is:        Main.hs
   hs-source-dirs: exe/factorial-exbudget
-  build-depends:  plutus-core
+  build-depends:  plutus-core  
 
 executable factorial-naive
   import:         common-exe
@@ -67,12 +67,20 @@ executable fibonacci-size
   main-is:        Main.hs
   hs-source-dirs: exe/fibonacci-size
   build-depends:  plutus-core
+  
+executable fibonacci-prepack
+  import:         common-exe
+  main-is:        Main.hs
+  hs-source-dirs: exe/fibonacci-prepack
+  build-depends:
+    plutus-core,
+    bytestring
 
 executable fibonacci-exbudget
   import:         common-exe
   main-is:        Main.hs
   hs-source-dirs: exe/fibonacci-exbudget
-  build-depends:  plutus-core
+  build-depends:  plutus-core    
 
 executable fibonacci-naive
   import:         common-exe
