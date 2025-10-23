@@ -48,7 +48,7 @@ pif'' cond ifT ifF =
 pfibo :: Term s (PInteger :--> PInteger)
 pfibo = plam $ \x ->
   pif''
-    (x #< 0)
+    (x #<= 0)
     x
     ((pbyteStringToInteger # pmostSignificantFirst #$
          psliceBS # (x * 3) # 3 # fibSeq
