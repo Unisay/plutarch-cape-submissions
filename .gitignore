@@ -19,9 +19,6 @@ result-*
 # Direnv
 .direnv/
 
-# Generated UPLC output files
-*.uplc
-
 # LLM-generated content (private by default)
 .local/
 

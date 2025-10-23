@@ -55,4 +55,4 @@ pfibo = plam $ \x ->
      ))
 
 main :: IO ()
-main = compileToUplc "fibonacci_prepacked.uplc" pfibo
+main = compileToUplc "exe/fibonacci-prepacked/fibonacci_prepacked.uplc" pfibo

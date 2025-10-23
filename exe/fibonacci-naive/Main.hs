@@ -9,4 +9,4 @@ pfiboNaive =
     pif (n #<= 1) n (self # (n - 1) + self # (n - 2))
 
 main :: IO ()
-main = compileToUplc "fibonacci_naive_recursion.uplc" pfiboNaive
+main = compileToUplc "exe/fibonacci-naive/fibonacci_naive_recursion.uplc" pfiboNaive

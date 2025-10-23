@@ -22,4 +22,4 @@ pfactorial =
     pif'' (x #<= 0) 1 (x * (r # (x - 1)))
 
 main :: IO ()
-main = compileToUplc "factorial_exbudget.uplc" pfactorial
+main = compileToUplc "exe/factorial-exbudget/factorial_exbudget.uplc" pfactorial
