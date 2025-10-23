@@ -68,10 +68,10 @@ executable fibonacci-size
   hs-source-dirs: exe/fibonacci-size
   build-depends:  plutus-core
   
-executable fibonacci-prepack
+executable fibonacci-prepacked
   import:         common-exe
   main-is:        Main.hs
-  hs-source-dirs: exe/fibonacci-prepack
+  hs-source-dirs: exe/fibonacci-prepacked
   build-depends:
     plutus-core,
     bytestring
